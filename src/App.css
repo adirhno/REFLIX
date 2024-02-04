@@ -164,3 +164,18 @@ img {
   padding: 10px;
   font-size: 20px;
 }
+
+.searchBar{
+	display: flex;
+	justify-content: space-between;
+}
+
+.budget{
+	position: relative;
+	right: 50px;
+}
+
+.movieDetailsAddBtn{
+	left: 138px;
+	bottom:380px
+}
