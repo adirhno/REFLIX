@@ -1,181 +1,175 @@
+/** @format */
+
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	height: 100vh;
-	background-color: black;
+  height: 100vh;
+  background-color: black;
 }
 
 .navBar {
-	border: solid black;
-	display: flex;
-	justify-content: space-between;
-	background-color: rgb(40, 39, 39);
-	padding: 10px;
-	font-family: "Courier New", Courier, monospace;
-	font-size: 20px;
+  border: solid black;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(40, 39, 39);
+  padding: 10px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
 }
 
 .link {
-	display: flex;
-	text-decoration: none;
-	padding: 3px;
-	font-weight: bold;
-	color: antiquewhite;
+  display: flex;
+  text-decoration: none;
+  padding: 3px;
+  font-weight: bold;
+  color: antiquewhite;
 }
 
 .catalog {
-	display: grid;
-	grid-template-columns: 3fr 3fr 3fr;
-	padding: 10px;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  padding: 10px;
 }
 
 img {
-	width: 300px;
-	height: 300px;
-	border-radius: 8px;
+  width: 300px;
+  height: 300px;
+  border-radius: 8px;
 }
 
 .movie {
-	padding: 10px;
-	cursor: pointer;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .addBtn {
-	position: relative;
-	right: 29px;
-	bottom: 280px;
-	border-radius: 54%;
-	color: rgb(17, 16, 16);
-	background-color: rgb(239, 239, 239);
-	font-size: 15px;
+  position: relative;
+  right: 29px;
+  bottom: 280px;
+  border-radius: 54%;
+  color: rgb(17, 16, 16);
+  background-color: rgb(239, 239, 239);
+  font-size: 15px;
 }
 
 .searchBtn {
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: rgb(138, 128, 128);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(138, 128, 128);
 }
 
 .logo {
-	color: aqua;
+  color: aqua;
 }
 
 .links {
-	display: flex;
-	justify-content: space-between;
-	width: 27%;
+  display: flex;
+  justify-content: space-between;
+  width: 19%;
 }
 
 .searchInput {
-	padding-top: 5px;
+  padding-top: 5px;
 }
 
 .users {
-	display: grid;
-	grid-template-columns: 3fr 3fr 3fr;
-	padding: 17px;
-	align-content: center;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  padding: 17px;
+  align-content: center;
 }
 
 .user {
-	text-decoration: none;
+  text-decoration: none;
+}
+
+.userName {
+  color: rgb(19, 20, 21);
+  width: 300px;
+  height: 260px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 45px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .red {
-	color: rgb(19, 20, 21);
-	background-color: red;
-	width: 300px;
-	height: 260px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 45px;
-	cursor: pointer;
-	font-family:Arial, Helvetica, sans-serif;
+  background-color: red;
 }
 
 .blue {
-	background-color: blue;
-	color: rgb(12, 13, 13);
-	width: 300px;
-	height: 260px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 45px;
-	cursor: pointer;
-	font-family:Arial, Helvetica, sans-serif;
+  background-color: blue;
 }
 
 .gray {
-	color: rgb(39, 37, 37);
-	background-color: gray;
-	width: 300px;
-	height: 260px;
-	border-radius: 8px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 45px;
-	cursor: pointer;
-	font-family:Arial, Helvetica, sans-serif;
+  background-color: gray;
+}
+
+.brown {
+  background-color: brown;
+}
+
+.yellow {
+  background-color: rgb(181, 187, 22);
 }
 
 .movieDetails {
-	color: aliceblue;
-	display: grid;
-	justify-items: center;
+  color: aliceblue;
+  display: grid;
+  justify-items: center;
 }
 
 .detailsImg {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .description {
-	width: 80%;
+  width: 80%;
 }
 
 .removeBtn {
-	position: relative;
-	left: 135px;
-	top: 25px;
+  position: relative;
+  left: 135px;
+  top: 25px;
 }
 
 .movieTitle {
-	font-weight: bold;
-	font-size: 20px;
-	margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-.landing{
+.landing {
   color: aliceblue;
   font-weight: bold;
   display: grid;
   justify-items: center;
-  margin-bottom: 20PX;
-  font-size: 30PX;
+  margin-bottom: 20px;
+  font-size: 30px;
 }
 
-.titles{
+.titles {
   color: aliceblue;
   padding: 10px;
   font-size: 20px;
 }
 
-.searchBar{
-	display: flex;
-	justify-content: space-between;
+.searchBar {
+  display: flex;
+  justify-content: space-between;
 }
 
-.budget{
-	position: relative;
-	right: 50px;
+.budget {
+  position: relative;
+  right: 50px;
 }
 
-.movieDetailsAddBtn{
-	left: 138px;
-	bottom:380px
+.movieDetailsAddBtn {
+  left: 138px;
+  bottom: 380px;
 }

@@ -65,9 +65,10 @@ function App() {
     },
   ];
   let userData = [
-    { name: "Adir", color: "gray" },
-    { name: "Reem", color: "red" },
-    { name: "Shelly", color: "blue" },
+    { name: "Adir", color: "userName gray" },
+    { name: "Reem", color: "userName red" },
+    { name: "Shelly", color: "userName blue" },
+	{ name: "Noy", color: "userName yellow" }
   ];
 
   const [movies, setMovies] = useState(data);
@@ -83,9 +84,9 @@ function App() {
   const [template, setTemplate] = useState("landing");
   const [movieDetails, setMovieDetails] = useState("");
 
+
   useEffect(()=>localStorage.clear(),[])
  
-
   const handleMovieDetails = (movieName) => {
     let details = data.find((m) => m.title === movieName);
     setMovieDetails(details);
