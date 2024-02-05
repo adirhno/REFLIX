@@ -57,7 +57,7 @@ function App() {
     {
       id: 4,
       isRented: false,
-      title: "Beauty and the Beast",
+      title: "Beauty and the Beast2",
       year: 2016,
       img: "https://images-na.ssl-images-amazon.com/images/I/51ArFYSFGJL.jpg",
       descrShort:
@@ -76,32 +76,57 @@ function App() {
   const [notRentedMovies, setNotRentedMovies] = useState(movies);
   const [isResults, setIsResults] = useState(false);
   const [results, setResults] = useState([]);
+  const [userRentedMovies, setUserRentedMovies] = useState([]);
   const [rentedTemplate, setRentedTemplate] = useState(false);
   const [input, setInput] = useState("");
+  const [user, setUser] = useState("");
   const [template, setTemplate] = useState("landing");
   const [movieDetails, setMovieDetails] = useState("");
 
-  const userBtn = () => {
-    setTemplate("catalog");
-    if (rentedMovies.length > 0) setRentedTemplate(true);
-  };
+  useEffect(()=>localStorage.clear(),[])
+ 
+
   const handleMovieDetails = (movieName) => {
     let details = data.find((m) => m.title === movieName);
     setMovieDetails(details);
   };
 
+  const handleUser = (userName) => {
+	setTemplate("catalog");
+    setUser(userName);
+    if (!localStorage.getItem(userName)) {
+		localStorage.setItem(userName+"budget",10)
+		setBudget(10)
+      localStorage.setItem(userName, JSON.stringify([]));
+      setUserRentedMovies([]);
+    } else {
+		let userBudget = JSON.parse(localStorage.getItem(userName+"budget"));
+      let moviesFromDb = JSON.parse(localStorage.getItem(userName));
+      setUserRentedMovies(moviesFromDb);
+	  setBudget(userBudget)
+    }
+  };
+
   const handleRemoveBtn = (removedMovie) => {
     if (isUpdateBudget(3)) {
+		let userMovies=JSON.parse(localStorage.getItem(user))
+		let index=userMovies.findIndex((m)=> m.title === removedMovie.title)
+			userMovies.splice(index,1)
+			localStorage.setItem(user,JSON.stringify(userMovies))
+			setUserRentedMovies(userMovies)
       updateMovies(false, removedMovie);
     }
   };
 
   const handleAddBtn = (movieRented) => {
-	
+    let moviesFromDb = JSON.parse(localStorage.getItem(user));
     if (isUpdateBudget(-3)) {
       updateMovies(true, movieRented);
       setRentedTemplate(true);
-	  alert("movie added!")
+      moviesFromDb.push({ ...movieRented });
+      localStorage.setItem(user, JSON.stringify(moviesFromDb));
+      setUserRentedMovies(moviesFromDb);
+      alert("movie added!");
     }
   };
 
@@ -114,7 +139,7 @@ function App() {
     let newNotRentedMovies = movies.filter((m) => m.isRented === false);
     setNotRentedMovies(newNotRentedMovies);
     let newRentedMovies = movies.filter((m) => m.isRented === true);
-    setRentedMovies(newRentedMovies);
+    setRentedMovies(userRentedMovies);
   };
 
   const filterLetters = (word) => {
@@ -128,6 +153,8 @@ function App() {
       return false;
     } else {
       setBudget((pre) => pre + action);
+	  console.log("the budget is",budget)
+	  localStorage.setItem(user+"budget",JSON.stringify(budget+action))
       return true;
     }
   };
@@ -144,9 +171,8 @@ function App() {
     });
   };
 
-  return (
-    <div className="App">
-      <NavBar
+  return <div className="App">
+	 <NavBar
 	    handleAddBtn={handleAddBtn}
         template={template}
         setIsResults={setIsResults}
@@ -160,12 +186,12 @@ function App() {
       ></NavBar>
       {!isResults ? (
         <Routes>
-          <Route path={"/"} element={<Landing users={userData} userBtn={userBtn} />}
+          <Route path={"/"} element={<Landing users={userData}handleUser={handleUser} />}
           />
           <Route path={"/catalog"} element={<Catalog
 		  		handleAddBtn={handleAddBtn}
                 handleRemoveBtn={handleRemoveBtn}
-                rentedMovies={rentedMovies}
+                rentedMovies={userRentedMovies}
                 movies={notRentedMovies}
                 handleMovieDetails={handleMovieDetails}
               />
@@ -177,8 +203,7 @@ function App() {
       ) : (
         <></>
       )}
-    </div>
-  );
+  </div>;
 }
 
 export default App;
